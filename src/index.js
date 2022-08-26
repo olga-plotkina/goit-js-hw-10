@@ -1,20 +1,22 @@
 import './css/styles.css';
+import { fetchCountries } from './js/fetchCountries';
+import { createCountryMarkup } from './js/createCountryMarkup';
+import { refs } from './js/refs';
+import debounce from 'lodash.debounce';
 const DEBOUNCE_DELAY = 300;
-const listRef = document.querySelector('.country-list');
 
-const createCountryMarkup = contries => {
-  return contries
-    .map(country => {
-      return `<li><img src="${country.flags.svg}" alt="${country.name.common}" height="20px">${country.name.common}</li>`;
-    })
-    .join('');
+const renderListOfCountries = countries => {
+  const markup = createCountryMarkup(countries);
+  refs.listOfCountries.innerHTML = markup;
 };
-const r = fetch('https://restcountries.com/v3.1/name/sw')
-  .then(response => response.json())
-  .then(countries => {
-    const markup = createCountryMarkup(countries);
-    listRef.innerHTML = markup;
-  })
-  .catch(error => console.log(error));
 
-console.log(r);
+const onInputSearch = e => {
+  fetchCountries(e.target.value)
+    .then(renderListOfCountries)
+    .catch(error => console.log(error));
+};
+
+refs.searchInput.addEventListener(
+  'input',
+  debounce(onInputSearch, DEBOUNCE_DELAY)
+);

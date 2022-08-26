@@ -11,7 +11,12 @@ const renderListOfCountries = countries => {
 };
 
 const onInputSearch = e => {
-  fetchCountries(e.target.value)
+  const strinOfSearch = e.target.value.trim();
+  if (!strinOfSearch) {
+    renderListOfCountries([]);
+    return;
+  }
+  fetchCountries(strinOfSearch)
     .then(renderListOfCountries)
     .catch(error => console.log(error));
 };

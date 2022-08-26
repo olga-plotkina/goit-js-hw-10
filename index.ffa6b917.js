@@ -1,2 +1,0 @@
-!function(){var n=document.querySelector(".country-list"),o=fetch("https://restcountries.com/v3.1/name/sw").then((function(n){return n.json()})).then((function(o){var t=o.map((function(n){return'<li><img src="'.concat(n.flags.svg,'" alt="').concat(n.name.common,'" height="20px">').concat(n.name.common,"</li>")})).join("");n.innerHTML=t})).catch((function(n){return console.log(n)}));console.log(o)}();
-//# sourceMappingURL=index.ffa6b917.js.map

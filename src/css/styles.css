@@ -21,4 +21,19 @@ body {
 
 ul {
   list-style: none;
+  padding: 0;
+}
+
+.country-info {
+  margin-left: 20px;
+}
+
+.property-name {
+  font-weight: 600;
+}
+.flag-icon {
+  margin-right: 10px;
+}
+.mini-flag {
+  margin-right: 5px;
 }

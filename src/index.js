@@ -26,7 +26,8 @@ const renderListOfCountries = countries => {
     refs.listOfCountries.innerHTML = '';
     const markup = createCountryMarkup(countries);
     refs.countryCard.innerHTML = markup;
-  } else {
+  }
+  if (countries.length > 1 && countries.length <= 10) {
     refs.countryCard.innerHTML = '';
     const markupOfList = createCountryListMarkup(countries);
     refs.listOfCountries.innerHTML = markupOfList;
@@ -39,7 +40,9 @@ const onInputSearch = e => {
     renderListOfCountries([]);
     return;
   }
-  fetchCountries(strinOfSearch).then(renderListOfCountries);
+  fetchCountries(strinOfSearch)
+    .then(renderListOfCountries)
+    .catch(error => Notiflix.Notify.failure(error));
 };
 
 refs.searchInput.addEventListener(

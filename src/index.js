@@ -1,11 +1,19 @@
 import './css/styles.css';
+import countryCardTpl from '../templates/country-card.hbs';
+import countryListTpl from '../templates/country-list.hbs';
 import { fetchCountries } from './js/fetchCountries';
-import { createCountryListMarkup } from './js/createCountryMarkup';
-import { createCountryMarkup } from './js/createCountryMarkup';
 import { refs } from './js/refs';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 const DEBOUNCE_DELAY = 300;
+
+const createCountryMarkup = contries => {
+  return contries.map(countryCardTpl);
+};
+
+const createCountryListMarkup = contries => {
+  return contries.map(countryListTpl);
+};
 
 const renderListOfCountries = countries => {
   if (countries.length > 10) {

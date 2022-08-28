@@ -1,6 +1,6 @@
 import './css/styles.css';
-import countryCardTpl from '../templates/country-card.hbs';
-import countryListTpl from '../templates/country-list.hbs';
+import countryCardTpl from './templates/country-card.hbs';
+import countryListTpl from './templates/country-list.hbs';
 import { fetchCountries } from './js/fetchCountries';
 import { refs } from './js/refs';
 import debounce from 'lodash.debounce';
